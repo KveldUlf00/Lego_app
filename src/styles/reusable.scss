@@ -2,4 +2,64 @@
     padding: 0.5rem 5rem !important;
     margin-top: 2.5rem !important;
     border-radius: 30px !important;
+
+    &.margin {
+        margin-top: 5rem !important;
+    }
+}
+
+.marginBottom {
+    margin-bottom: 5rem;
+}
+
+.dataBox {
+    display: flex;
+    justify-content: center;
+
+    .figure {
+        background-color: #fff;
+        max-width: 15%;
+        margin: 0 1rem;
+        padding: 1rem 2rem 2rem 2rem;
+        border-radius:10px;
+        color: #000;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+            -webkit-box-shadow: 0px 0px 20px 6px rgba(255,255,102,1);
+            -moz-box-shadow: 0px 0px 20px 6px rgba(255,255,102,1);
+            box-shadow: 0px 0px 20px 6px rgba(255,255,102,1);
+        }
+
+        &.active {
+            -webkit-box-shadow: 0px 0px 20px 6px rgba(255,153,51,1);
+            -moz-box-shadow: 0px 0px 20px 6px rgba(255,153,51,1);
+            box-shadow: 0px 0px 20px 6px rgba(255,153,51,1);
+        }
+
+        .imgBox {
+            width: 100%;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        a {
+            color: #ff9933;
+            text-decoration: none;
+            transition: 0.3s;
+            z-index: 5;
+
+            &:hover {
+                color: #4d2600;
+            }
+        }
+    }
+
 }

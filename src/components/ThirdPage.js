@@ -1,4 +1,4 @@
-const ThirdPage = () => {
+const ThirdPage = ({ resetStep, chosenFigure }) => {
   return <div className="page">Third Page</div>;
 };
 
