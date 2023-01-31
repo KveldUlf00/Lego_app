@@ -13,4 +13,19 @@
     align-items: center;
     justify-content: center;
   }
+
+  .doubleBox {
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+    .formBox {
+      flex-grow: 4;
+    }
+
+    .summaryBox {
+      flex-grow: 2;
+      border-left: 1px solid #fff;
+    }
+  }
 }
