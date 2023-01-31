@@ -1,21 +1,34 @@
+import { useState } from "react";
+import FirstPage from "./FirstPage";
+import SecondPage from "./SecondPage";
+import ThirdPage from "./ThirdPage";
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [step, setStep] = useState(1);
+
+  const nextStep = () => {
+    setStep((origin) => origin + 1);
+  };
+
+  const previousStep = () => {
+    setStep((origin) => origin - 1);
+  };
+
+  switch (step) {
+    case 1:
+      return <FirstPage nextStepChange={nextStep} />;
+    case 2:
+      return (
+        <SecondPage
+          previousStepChange={previousStep}
+          nextStepChange={nextStep}
+        />
+      );
+    case 3:
+      return <ThirdPage previousStepChange={previousStep} />;
+    default:
+      return null;
+  }
 }
 
 export default App;
