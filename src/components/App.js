@@ -8,15 +8,19 @@ import { getFigs } from "../service/legoCalls";
 function App() {
   const [step, setStep] = useState(1);
   const [figures, setFigures] = useState([]);
+  const [chosenFigure, setChosenFigure] = useState({});
 
   const howManyFigures = 3;
 
-  const nextStep = () => {
+  const nextStep = (elem = {}) => {
     setStep((origin) => origin + 1);
+    if ("set_num" in elem) {
+      setChosenFigure(elem);
+    }
   };
 
-  const previousStep = () => {
-    setStep((origin) => origin - 1);
+  const resetStep = () => {
+    setStep(1);
   };
 
   useEffect(() => {
@@ -43,15 +47,9 @@ function App() {
     case 1:
       return <FirstPage nextStepChange={nextStep} />;
     case 2:
-      return (
-        <SecondPage
-          previousStepChange={previousStep}
-          nextStepChange={nextStep}
-          figures={figures}
-        />
-      );
+      return <SecondPage nextStepChange={nextStep} figures={figures} />;
     case 3:
-      return <ThirdPage previousStepChange={previousStep} />;
+      return <ThirdPage resetStep={resetStep} chosenFigure={chosenFigure} />;
     default:
       return null;
   }
