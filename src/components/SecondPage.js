@@ -7,7 +7,6 @@ import { useState } from "react";
 
 const SecondPage = ({ nextStepChange, figures }) => {
   const [selected, setSelected] = useState({});
-  console.log(figures);
 
   return (
     <div className="page">
