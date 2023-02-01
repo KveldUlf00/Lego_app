@@ -29,6 +29,10 @@ const InputMui = ({
   required,
   className,
   disabled,
+  pattern,
+  patternMsg,
+  maxLengthValue,
+  maxLengthMessage,
 }) => {
   const classes = useStyles();
   const methods = useFormContext();
@@ -39,14 +43,14 @@ const InputMui = ({
       name={name}
       control={methods.control}
       rules={{
-        required: required ? "xDDDDD" : false,
-        // pattern: {
-        //   value: pattern,
-        //   message: patternMsg,
-        // },
+        required: required ? "This field is required." : false,
+        pattern: {
+          value: pattern,
+          message: patternMsg,
+        },
         maxLength: {
-          value: 3,
-          message: "no byczq",
+          value: maxLengthValue,
+          message: maxLengthMessage,
         },
       }}
       render={(props) => (
@@ -68,7 +72,9 @@ const InputMui = ({
             <ErrorMessage
               name={name}
               errors={methods.errors}
-              render={({ message }) => <span>{message}</span>}
+              render={({ message }) => (
+                <span className="errorMessage">{message}</span>
+              )}
             />
           }
         />
@@ -85,12 +91,20 @@ InputMui.propTypes = {
   required: PropTypes.bool,
   className: PropTypes.string,
   disabled: PropTypes.bool,
+  pattern: PropTypes.objectOf(PropTypes.string),
+  patternMsg: PropTypes.string,
+  maxLengthValue: PropTypes.number,
+  maxLengthMessage: PropTypes.string,
 };
 
 InputMui.defaultProps = {
   required: false,
   className: "",
   disabled: false,
+  pattern: null,
+  patternMsg: "",
+  maxLengthValue: null,
+  maxLengthMessage: "",
 };
 
 export default InputMui;
