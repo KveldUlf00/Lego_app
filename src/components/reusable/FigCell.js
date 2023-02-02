@@ -28,6 +28,9 @@ const FigCell = ({
           }
           alt={data.name}
         />
+        {!data.set_img_url && (
+          <span className="notFound">Photo not found.</span>
+        )}
       </div>
       <p className="name">{data.name}</p>
       {!staticMode && (
