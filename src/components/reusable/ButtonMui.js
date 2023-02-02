@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 import Button from "@mui/material/Button";
 
-const ButtonMui = ({ title, type, onClick, className, disabled }) => {
+const ButtonMui = ({ className, disabled, onClick, title, type }) => {
   return (
     <Button
       className={className}
@@ -20,17 +20,17 @@ const ButtonMui = ({ title, type, onClick, className, disabled }) => {
 };
 
 ButtonMui.propTypes = {
-  title: PropTypes.string.isRequired,
-  type: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
   className: PropTypes.string,
   disabled: PropTypes.bool,
+  onClick: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  type: PropTypes.string,
 };
 
 ButtonMui.defaultProps = {
   className: "",
-  type: "button",
   disabled: false,
+  type: "button",
 };
 
 export default ButtonMui;

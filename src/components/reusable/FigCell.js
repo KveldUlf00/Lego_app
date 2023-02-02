@@ -2,12 +2,12 @@ import PropTypes from "prop-types";
 
 const FigCell = ({
   active,
+  btn,
   data,
+  parts,
   setSelected,
   staticMode,
   title,
-  btn,
-  parts,
 }) => {
   return (
     <div
@@ -68,21 +68,21 @@ const FigCell = ({
 
 FigCell.propTypes = {
   active: PropTypes.bool,
+  btn: PropTypes.object,
   data: PropTypes.object.isRequired,
+  parts: PropTypes.array,
   setSelected: PropTypes.func,
   staticMode: PropTypes.bool,
   title: PropTypes.string,
-  btn: PropTypes.object,
-  parts: PropTypes.array,
 };
 
 FigCell.defaultProps = {
   active: false,
+  btn: {},
+  parts: [],
   setSelected: () => {},
   staticMode: false,
   title: "",
-  btn: {},
-  parts: [],
 };
 
 export default FigCell;

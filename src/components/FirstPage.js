@@ -23,8 +23,4 @@ FirstPage.propTypes = {
   nextStepChange: PropTypes.func.isRequired,
 };
 
-// FirstPage.defaultProps = {
-//     className: "",
-// };
-
 export default FirstPage;
