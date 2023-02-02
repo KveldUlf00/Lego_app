@@ -1,11 +1,12 @@
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { FormProvider, useForm } from "react-hook-form";
 
 import ButtonMui from "./reusable/ButtonMui";
 import FigCell from "./reusable/FigCell";
 import InputMui from "./reusable/InputMui";
-import { useEffect, useState } from "react";
 
+import axios from "axios";
 import { getParts } from "../service/legoCalls";
 
 const ThirdPage = ({ resetStep, chosenFigure }) => {
@@ -25,6 +26,22 @@ const ThirdPage = ({ resetStep, chosenFigure }) => {
   const onSubmit = (data) => {
     console.log("submit!");
     console.log(data);
+
+    axios({
+      method: "post",
+      url: "http://127.0.0.1:4000/data",
+      responseType: "application/json",
+      data: data,
+    })
+      .then((res) => {
+        if (res.status === 201) {
+          console.log("sukces!!!");
+          resetStep();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     try {
       // const { data } = await canVote(editionId, formData);
