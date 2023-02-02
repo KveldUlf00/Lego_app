@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
+
 import FirstPage from "./FirstPage";
 import SecondPage from "./SecondPage";
 import ThirdPage from "./ThirdPage";
-
 import { getFigs } from "../service/legoCalls";
 
 function App() {
@@ -41,7 +41,7 @@ function App() {
         })
         .catch((err) => console.error(err));
     }
-  }, [step]);
+  }, [figures.length, step]);
 
   switch (step) {
     case 1:

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { FormProvider, useForm } from "react-hook-form";
+import { useSnackbar } from "notistack";
 
 import ButtonMui from "./reusable/ButtonMui";
 import FigCell from "./reusable/FigCell";
@@ -11,6 +12,9 @@ import { getParts } from "../service/legoCalls";
 
 const ThirdPage = ({ resetStep, chosenFigure }) => {
   const [parts, setParts] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const { enqueueSnackbar } = useSnackbar();
 
   const regex = {
     birth: /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/,
@@ -24,8 +28,7 @@ const ThirdPage = ({ resetStep, chosenFigure }) => {
   const methods = useForm();
 
   const onSubmit = (data) => {
-    console.log("submit!");
-    console.log(data);
+    setLoading(true);
 
     axios({
       method: "post",
@@ -35,27 +38,21 @@ const ThirdPage = ({ resetStep, chosenFigure }) => {
     })
       .then((res) => {
         if (res.status === 201) {
-          console.log("sukces!!!");
-          resetStep();
+          enqueueSnackbar("Data has been successfully submitted!", {
+            variant: "success",
+          });
+          setTimeout(() => {
+            setLoading(false);
+            resetStep();
+          }, "3000");
         }
       })
       .catch((err) => {
         console.log(err);
+        enqueueSnackbar(err.message, {
+          variant: "error",
+        });
       });
-
-    try {
-      // const { data } = await canVote(editionId, formData);
-      // setShowSecondStep(data.can_vote && !data.voted);
-      // setDialogIsOpen((data.can_vote && data.voted) || !data.can_vote);
-      window.scrollTo(0, 0);
-    } catch (e) {
-      // enqueueSnackbar(
-      //   e.response?.data?.message
-      //     ? e.response?.data?.message
-      //     : 'Nie udało się oddać głosu',
-      //   { variant: 'error' },
-      // );
-    }
   };
 
   useEffect(() => {
@@ -168,8 +165,9 @@ const ThirdPage = ({ resetStep, chosenFigure }) => {
               <ButtonMui
                 title="Submit"
                 type="submit"
-                className="btn"
+                className="btn big"
                 onClick={methods.handleSubmit(onSubmit)}
+                disabled={loading}
               />
             }
           />
@@ -183,9 +181,5 @@ ThirdPage.propTypes = {
   resetStep: PropTypes.func.isRequired,
   chosenFigure: PropTypes.object.isRequired,
 };
-
-// SecondPage.defaultProps = {
-//     className: "",
-// };
 
 export default ThirdPage;

@@ -13,6 +13,10 @@
     color: #555 !important;
     border: 1px solid #333 !important;
   }
+
+  &.big {
+    padding: 0.8rem 7rem !important;
+  }
 }
 
 .marginBottom {
@@ -100,6 +104,10 @@
     &:hover {
       color: #4d2600;
     }
+  }
+
+  .partsLen {
+    text-align: left;
   }
 
   .partsContainer {
