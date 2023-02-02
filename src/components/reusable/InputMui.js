@@ -21,16 +21,16 @@ const useStyles = makeStyles(() => ({
 }));
 
 const InputMui = ({
-  name,
-  label,
-  errors,
-  required,
   disabled,
+  errors,
+  label,
+  maxLengthMessage,
+  maxLengthValue,
+  name,
   pattern,
   patternMsg,
-  maxLengthValue,
-  maxLengthMessage,
   placeholderText,
+  required,
 }) => {
   const classes = useStyles();
   const methods = useFormContext();
@@ -50,7 +50,7 @@ const InputMui = ({
           message: maxLengthMessage,
         },
       }}
-      render={(props) => (
+      render={() => (
         <TextField
           id={`id-${label}`}
           label={label}
@@ -80,26 +80,26 @@ const InputMui = ({
 };
 
 InputMui.propTypes = {
-  name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  errors: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  required: PropTypes.bool,
   disabled: PropTypes.bool,
+  errors: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  label: PropTypes.string.isRequired,
+  maxLengthMessage: PropTypes.string,
+  maxLengthValue: PropTypes.number,
+  name: PropTypes.string.isRequired,
   pattern: PropTypes.objectOf(PropTypes.string),
   patternMsg: PropTypes.string,
-  maxLengthValue: PropTypes.number,
-  maxLengthMessage: PropTypes.string,
   placeholderText: PropTypes.string,
+  required: PropTypes.bool,
 };
 
 InputMui.defaultProps = {
-  required: false,
   disabled: false,
+  maxLengthMessage: "",
+  maxLengthValue: null,
   pattern: null,
   patternMsg: "",
-  maxLengthValue: null,
-  maxLengthMessage: "",
   placeholderText: "",
+  required: false,
 };
 
 export default InputMui;

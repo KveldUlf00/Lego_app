@@ -10,7 +10,7 @@ import InputMui from "./reusable/InputMui";
 import axios from "axios";
 import { getParts } from "../service/legoCalls";
 
-const ThirdPage = ({ resetStep, chosenFigure }) => {
+const ThirdPage = ({ chosenFigure, resetStep }) => {
   const [parts, setParts] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -48,7 +48,7 @@ const ThirdPage = ({ resetStep, chosenFigure }) => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        setLoading(false);
         enqueueSnackbar(err.message, {
           variant: "error",
         });
@@ -178,8 +178,8 @@ const ThirdPage = ({ resetStep, chosenFigure }) => {
 };
 
 ThirdPage.propTypes = {
-  resetStep: PropTypes.func.isRequired,
   chosenFigure: PropTypes.object.isRequired,
+  resetStep: PropTypes.func.isRequired,
 };
 
 export default ThirdPage;

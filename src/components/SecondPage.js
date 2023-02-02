@@ -5,7 +5,7 @@ import ButtonMui from "./reusable/ButtonMui";
 import FigCell from "./reusable/FigCell";
 import { useState } from "react";
 
-const SecondPage = ({ nextStepChange, figures }) => {
+const SecondPage = ({ figures, nextStepChange }) => {
   const [selected, setSelected] = useState({});
 
   return (
@@ -42,12 +42,8 @@ const SecondPage = ({ nextStepChange, figures }) => {
 };
 
 SecondPage.propTypes = {
-  nextStepChange: PropTypes.func.isRequired,
   figures: PropTypes.array.isRequired,
+  nextStepChange: PropTypes.func.isRequired,
 };
-
-// SecondPage.defaultProps = {
-//     className: "",
-// };
 
 export default SecondPage;
