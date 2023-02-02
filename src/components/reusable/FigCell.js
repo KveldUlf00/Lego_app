@@ -9,8 +9,6 @@ const FigCell = ({
   btn,
   parts,
 }) => {
-  console.log(parts);
-
   return (
     <div
       className={`figure ${active ? "active" : ""} ${
@@ -42,6 +40,11 @@ const FigCell = ({
         >
           Show details
         </a>
+      )}
+      {parts.length > 0 && (
+        <p className="partsLen">
+          There are {parts.length} parts in this minifig:
+        </p>
       )}
       {parts.length > 0 && (
         <div className="partsContainer">

@@ -4,9 +4,8 @@ import { ErrorMessage } from "@hookform/error-message";
 
 import TextField from "@mui/material/TextField";
 import { makeStyles } from "@material-ui/styles";
-import { useForm } from "react-hook-form";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     "& .MuiFilledInput-root": {
       background: "#fff",
@@ -24,10 +23,8 @@ const useStyles = makeStyles((theme) => ({
 const InputMui = ({
   name,
   label,
-  registers,
   errors,
   required,
-  className,
   disabled,
   pattern,
   patternMsg,
@@ -37,7 +34,6 @@ const InputMui = ({
 }) => {
   const classes = useStyles();
   const methods = useFormContext();
-  const { register } = useForm();
 
   return (
     <Controller
@@ -59,8 +55,6 @@ const InputMui = ({
           id={`id-${label}`}
           label={label}
           {...methods.register(name)}
-          // inputRef={props.ref}
-          // {...register(name, registers)}
           errors={errors}
           className={classes.root}
           error={!!get(methods.errors, name) || false}
@@ -88,10 +82,8 @@ const InputMui = ({
 InputMui.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  registers: PropTypes.object.isRequired,
   errors: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   required: PropTypes.bool,
-  className: PropTypes.string,
   disabled: PropTypes.bool,
   pattern: PropTypes.objectOf(PropTypes.string),
   patternMsg: PropTypes.string,
@@ -102,7 +94,6 @@ InputMui.propTypes = {
 
 InputMui.defaultProps = {
   required: false,
-  className: "",
   disabled: false,
   pattern: null,
   patternMsg: "",
