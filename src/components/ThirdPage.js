@@ -30,11 +30,18 @@ const ThirdPage = ({ chosenFigure, resetStep }) => {
   const onSubmit = (data) => {
     setLoading(true);
 
+    const dataToSubmit = {
+      client: { ...data },
+      ordered_figure: { ...chosenFigure, parts: parts },
+    };
+
+    // url to our Fake API
+    // to run Fake API check README.md
     axios({
       method: "post",
       url: "http://127.0.0.1:4000/data",
       responseType: "application/json",
-      data: data,
+      data: dataToSubmit,
     })
       .then((res) => {
         if (res.status === 201) {
@@ -73,14 +80,14 @@ const ThirdPage = ({ chosenFigure, resetStep }) => {
               <h1>SHIPPING DETAILS</h1>
               <div className="double">
                 <InputMui
-                  name="Name"
+                  name="name"
                   label="Name"
                   required
                   maxLengthValue={30}
                   maxLengthMessage="The maximum field length is 30 characters."
                 />
                 <InputMui
-                  name="Surname"
+                  name="surname"
                   label="Surname"
                   required
                   maxLengthValue={30}
@@ -88,7 +95,7 @@ const ThirdPage = ({ chosenFigure, resetStep }) => {
                 />
               </div>
               <InputMui
-                name="Phone"
+                name="phone"
                 label="Phone Number"
                 required
                 pattern={regex.phone}
@@ -97,7 +104,7 @@ const ThirdPage = ({ chosenFigure, resetStep }) => {
                 maxLengthMessage="The maximum field length is 20 characters."
               />
               <InputMui
-                name="Email"
+                name="email"
                 label="Email"
                 required
                 pattern={regex.email}
@@ -106,7 +113,7 @@ const ThirdPage = ({ chosenFigure, resetStep }) => {
                 maxLengthMessage="The maximum field length is 40 characters."
               />
               <InputMui
-                name="Birth"
+                name="birth"
                 label="Date of birth"
                 required
                 pattern={regex.birth}
@@ -114,7 +121,7 @@ const ThirdPage = ({ chosenFigure, resetStep }) => {
                 placeholderText="mm/dd/yyyy"
               />
               <InputMui
-                name="Adress"
+                name="adress"
                 label="Adress"
                 required
                 pattern={regex.street}
@@ -123,7 +130,7 @@ const ThirdPage = ({ chosenFigure, resetStep }) => {
                 maxLengthMessage="The maximum field length is 40 characters."
               />
               <InputMui
-                name="City"
+                name="city"
                 label="City"
                 required
                 pattern={regex.street}
@@ -133,7 +140,7 @@ const ThirdPage = ({ chosenFigure, resetStep }) => {
               />
               <div className="double">
                 <InputMui
-                  name="State"
+                  name="state"
                   label="State"
                   required
                   pattern={regex.street}
@@ -142,7 +149,7 @@ const ThirdPage = ({ chosenFigure, resetStep }) => {
                   maxLengthMessage="The maximum field length is 40 characters."
                 />
                 <InputMui
-                  name="Zip"
+                  name="zip"
                   label="Zip Code"
                   required
                   pattern={regex.postalCode}

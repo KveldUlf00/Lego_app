@@ -22,7 +22,7 @@ const FigCell = ({
           src={
             data.set_img_url
               ? data.set_img_url
-              : "https://cdn.rebrickable.com/media/parts/elements/362624.jpg"
+              : "https://rebrickable.com/static/img/nil_mf.jpg"
           }
           alt={data.name}
         />
@@ -51,7 +51,14 @@ const FigCell = ({
           {parts.map((part) => (
             <div className="partsBox" key={`key-${part.name}`}>
               <div className="image">
-                <img src={part.part_img_url} alt={part.name} />
+                <img
+                  src={
+                    part.part_img_url
+                      ? part.part_img_url
+                      : "https://cdn.rebrickable.com/media/parts/elements/362624.jpg"
+                  }
+                  alt={part.name}
+                />
               </div>
               <div className="content">
                 <span>{part.name}</span>

@@ -20,6 +20,8 @@ function App() {
   };
 
   const resetStep = () => {
+    setFigures([]);
+    setChosenFigure({});
     setStep(1);
   };
 
