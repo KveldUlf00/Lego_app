@@ -2,9 +2,16 @@
   padding: 0.5rem 5rem !important;
   margin-top: 2.5rem !important;
   border-radius: 30px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
 
   &.margin {
     margin-top: 5rem !important;
+  }
+
+  &.disabled {
+    color: #555 !important;
+    border: 1px solid #333 !important;
   }
 }
 
@@ -76,6 +83,11 @@
 
     img {
       width: 100%;
+    }
+
+    .notFound {
+      color: #999;
+      font-size: 14px;
     }
   }
 

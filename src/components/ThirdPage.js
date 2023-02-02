@@ -12,10 +12,11 @@ const ThirdPage = ({ resetStep, chosenFigure }) => {
   const [parts, setParts] = useState([]);
 
   const regex = {
+    birth: /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/,
     email: /\S+@\S+\.\S+/,
     houseNumber: /^[0-9A-Za-z]+([-\/]){0,1}[0-9A-Za-z]*$/,
-    phone: /^[+]*[(]{0,1}[0-9, +]{1,4}[)]{0,1}[-\s\.\/0-9]*$/,
-    postalCode: /^[0-9]{2}-[0-9]{3}$/,
+    phone: /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/,
+    postalCode: /^[0-9]{5}$/,
     street: /^[A-Za-zĄąĆćĘęŁłóÓŹźŻżńŃŚś0-9 .-]*$/,
   };
 
@@ -78,6 +79,8 @@ const ThirdPage = ({ resetStep, chosenFigure }) => {
                 required
                 pattern={regex.phone}
                 patternMsg="Wrong phone number format."
+                maxLengthValue={20}
+                maxLengthMessage="The maximum field length is 20 characters."
               />
               <InputMui
                 name="Email"
@@ -85,14 +88,25 @@ const ThirdPage = ({ resetStep, chosenFigure }) => {
                 required
                 pattern={regex.email}
                 patternMsg="Wrong email format."
+                maxLengthValue={40}
+                maxLengthMessage="The maximum field length is 40 characters."
               />
-              <InputMui name="Birth" label="Date of birth" required />
+              <InputMui
+                name="Birth"
+                label="Date of birth"
+                required
+                pattern={regex.birth}
+                patternMsg="This field contains invalid characters."
+                placeholderText="mm/dd/yyyy"
+              />
               <InputMui
                 name="Adress"
                 label="Adress"
                 required
                 pattern={regex.street}
                 patternMsg="This field contains invalid characters."
+                maxLengthValue={40}
+                maxLengthMessage="The maximum field length is 40 characters."
               />
               <InputMui
                 name="City"
@@ -100,6 +114,8 @@ const ThirdPage = ({ resetStep, chosenFigure }) => {
                 required
                 pattern={regex.street}
                 patternMsg="This field contains invalid characters."
+                maxLengthValue={40}
+                maxLengthMessage="The maximum field length is 40 characters."
               />
               <div className="double">
                 <InputMui
@@ -108,6 +124,8 @@ const ThirdPage = ({ resetStep, chosenFigure }) => {
                   required
                   pattern={regex.street}
                   patternMsg="This field contains invalid characters."
+                  maxLengthValue={40}
+                  maxLengthMessage="The maximum field length is 40 characters."
                 />
                 <InputMui
                   name="Zip"
@@ -115,6 +133,9 @@ const ThirdPage = ({ resetStep, chosenFigure }) => {
                   required
                   pattern={regex.postalCode}
                   patternMsg="This field contains invalid characters."
+                  maxLengthValue={10}
+                  maxLengthMessage="The maximum field length is 10 characters."
+                  placeholderText="xxxxx"
                 />
               </div>
             </form>

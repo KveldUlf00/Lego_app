@@ -9,7 +9,7 @@ const FirstPage = ({ nextStepChange }) => {
         <div>
           <h1>LEGO MINIFIGS MYSTERY BOX</h1>
           <ButtonMui
-            title="LET'S GO!"
+            title="Let's go!"
             onClick={nextStepChange}
             className="btn"
           />

@@ -28,9 +28,11 @@ const SecondPage = ({ nextStepChange, figures }) => {
             )}
           </div>
           <ButtonMui
-            title="PROCEED TO SHIPMENT"
+            title="Proceed to shipment"
             onClick={() => nextStepChange(selected)}
-            className="btn margin"
+            className={`btn margin ${
+              Object.keys(selected).length === 0 ? "disabled" : ""
+            }`}
             disabled={Object.keys(selected).length === 0}
           />
         </div>

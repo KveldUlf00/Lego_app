@@ -33,6 +33,7 @@ const InputMui = ({
   patternMsg,
   maxLengthValue,
   maxLengthMessage,
+  placeholderText,
 }) => {
   const classes = useStyles();
   const methods = useFormContext();
@@ -68,6 +69,7 @@ const InputMui = ({
           color="primary"
           fullWidth
           margin="normal"
+          placeholder={placeholderText}
           helperText={
             <ErrorMessage
               name={name}
@@ -95,6 +97,7 @@ InputMui.propTypes = {
   patternMsg: PropTypes.string,
   maxLengthValue: PropTypes.number,
   maxLengthMessage: PropTypes.string,
+  placeholderText: PropTypes.string,
 };
 
 InputMui.defaultProps = {
@@ -105,6 +108,7 @@ InputMui.defaultProps = {
   patternMsg: "",
   maxLengthValue: null,
   maxLengthMessage: "",
+  placeholderText: "",
 };
 
 export default InputMui;
